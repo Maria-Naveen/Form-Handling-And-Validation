@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -71,6 +71,9 @@ const Form = () => {
 
     if (!formData.gender) newErrors.gender = "Gender is required";
 
+    if (formData.hobbies.length === 0)
+      newErrors.hobbies = "Atleast select one hobby";
+
     if (formData.nationality === "Other" && !formData.otherNationality)
       newErrors.otherNationality = "Please specify your nationality";
 
@@ -119,7 +122,6 @@ const Form = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                required
               />
               {errors.name && (
                 <p className="text-red-500 text-xs mt-1">{errors.name}</p>
@@ -139,7 +141,6 @@ const Form = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                required
               />
               {errors.email && (
                 <p className="text-red-500 text-xs mt-1">{errors.email}</p>
@@ -159,7 +160,6 @@ const Form = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                required
               />
               {errors.password && (
                 <p className="text-red-500 text-xs mt-1">{errors.password}</p>
@@ -180,7 +180,6 @@ const Form = () => {
                 max={maxDate}
                 value={formData.dob}
                 onChange={handleChange}
-                required
               />
               {errors.dob && (
                 <p className="text-red-500 text-xs mt-1">{errors.dob}</p>
@@ -206,6 +205,9 @@ const Form = () => {
                   </div>
                 ))}
               </div>
+              {errors.hobbies && (
+                <p className="text-red-500 text-xs mt-1">{errors.hobbies}</p>
+              )}
             </div>
             <div className="mb-4">
               <span className="block text-sm font-medium text-gray-700">
@@ -264,7 +266,6 @@ const Form = () => {
                     name="otherNationality"
                     value={formData.otherNationality}
                     onChange={handleChange}
-                    required
                   />
                   {errors.otherNationality && (
                     <p className="text-red-500 text-xs mt-1">
