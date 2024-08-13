@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Input from "./Input/Input";
 
 const today = new Date().toISOString().split("T")[0];
 const Form = () => {
@@ -104,83 +105,47 @@ const Form = () => {
       <div className="md:flex">
         <div className="w-full p-4">
           <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Name:
-              </label>
-              <input
-                className="mt-1 block w-full border-b border-purple-600 focus:outline-none px-2"
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-              {errors.name && (
-                <p className="text-red-500 text-xs mt-1">{errors.name}</p>
-              )}
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email:
-              </label>
-              <input
-                className="mt-1 block w-full border-b border-purple-600 focus:outline-none px-2"
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              {errors.email && (
-                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-              )}
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Password:
-              </label>
-              <input
-                className="mt-1 block w-full border-b border-purple-600 focus:outline-none px-2"
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
-              {errors.password && (
-                <p className="text-red-500 text-xs mt-1">{errors.password}</p>
-              )}
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="dob"
-                className="block text-sm font-medium text-gray-700"
-              >
-                DOB:
-              </label>
-              <input
-                className="mt-1 block w-full border-b border-purple-600 focus:outline-none px-2"
-                type="date"
-                id="dob"
-                name="dob"
-                max={maxDate}
-                value={formData.dob}
-                onChange={handleChange}
-              />
-              {errors.dob && (
-                <p className="text-red-500 text-xs mt-1">{errors.dob}</p>
-              )}
-            </div>
+            <Input
+              id="name"
+              label="Name:"
+              type="text"
+              name="name"
+              onChange={handleChange}
+              value={formData.value}
+              errors={errors}
+            ></Input>
+
+            <Input
+              id="email"
+              label="Email:"
+              type="email"
+              name="email"
+              onChange={handleChange}
+              value={formData.value}
+              errors={errors}
+            ></Input>
+
+            <Input
+              id="password"
+              label="Password:"
+              type="password"
+              name="password"
+              onChange={handleChange}
+              value={formData.value}
+              errors={errors}
+            ></Input>
+
+            <Input
+              id="dob"
+              label="D.O.B:"
+              type="date"
+              name="dob"
+              max={maxDate}
+              onChange={handleChange}
+              value={formData.value}
+              errors={errors}
+            ></Input>
+
             <div className="mb-4">
               <span className="block text-sm font-medium text-gray-700">
                 Hobbies:
