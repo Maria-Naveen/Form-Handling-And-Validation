@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+const today = new Date().toISOString().split("T")[0];
 const Form = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -14,12 +15,7 @@ const Form = () => {
 
   const [errors, setErrors] = useState({});
   const [showOtherNationality, setShowOtherNationality] = useState(false);
-  const [maxDate, setMaxDate] = useState("");
-
-  useEffect(() => {
-    const today = new Date().toISOString().split("T")[0];
-    setMaxDate(today);
-  }, []);
+  const [maxDate, setMaxDate] = useState(today);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
